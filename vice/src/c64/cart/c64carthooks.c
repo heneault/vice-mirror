@@ -72,6 +72,7 @@
 #include "c64-generic.h"
 #include "c64-midi.h"
 #include "c64tpi.h"
+#include "chat64.h"
 #include "comal80.h"
 #include "capture.h"
 #include "debugcart.h"
@@ -252,6 +253,9 @@ static const cmdline_option_t cmdline_options[] =
     { "-cartcap", CALL_FUNCTION, CMDLINE_ATTRIB_NEED_ARGS,
       cart_attach_cmdline, (void *)CARTRIDGE_CAPTURE, NULL, NULL,
       "<Name>", "Attach raw 8KiB Capture cartridge image" },
+    { "-cartchat64", CALL_FUNCTION, CMDLINE_ATTRIB_NEED_ARGS,
+      cart_attach_cmdline, (void *)CARTRIDGE_CHAT64, NULL, NULL,
+      "<Name>", "Attach raw 8KiB Chat64 cartridge image" },
     { "-cartcomal", CALL_FUNCTION, CMDLINE_ATTRIB_NEED_ARGS,
       cart_attach_cmdline, (void *)CARTRIDGE_COMAL80, NULL, NULL,
       "<Name>", "Attach raw 64KiB Comal 80 cartridge image" },
@@ -923,6 +927,8 @@ int cart_bin_attach(int type, const char *filename, uint8_t *rawcart)
             return blackbox9_bin_attach(filename, rawcart);
         case CARTRIDGE_CAPTURE:
             return capture_bin_attach(filename, rawcart);
+        case CARTRIDGE_CHAT64:
+            return chat64_bin_attach(filename, rawcart);
         case CARTRIDGE_COMAL80:
             return comal80_bin_attach(filename, rawcart);
         case CARTRIDGE_DELA_EP64:
@@ -1146,6 +1152,9 @@ void cart_attach(int type, uint8_t *rawcart)
             break;
         case CARTRIDGE_CAPTURE:
             capture_config_setup(rawcart);
+            break;
+        case CARTRIDGE_CHAT64:
+            chat64_config_setup(rawcart);
             break;
         case CARTRIDGE_COMAL80:
             comal80_config_setup(rawcart);
@@ -1746,6 +1755,9 @@ void cart_detach(int type)
         case CARTRIDGE_CAPTURE:
             capture_detach();
             break;
+        case CARTRIDGE_CHAT64:
+            chat64_detach();
+            break;
         case CARTRIDGE_COMAL80:
             comal80_detach();
             break;
@@ -2039,6 +2051,9 @@ void cartridge_init_config(void)
                 break;
             case CARTRIDGE_CAPTURE:
                 capture_config_init();
+                break;
+            case CARTRIDGE_CHAT64:
+                chat64_config_init();
                 break;
             case CARTRIDGE_COMAL80:
                 comal80_config_init();
@@ -2341,6 +2356,9 @@ void cartridge_reset(void)
         case CARTRIDGE_CAPTURE:
             capture_reset();
             break;
+        case CARTRIDGE_CHAT64:
+            chat64_reset();
+            break;
         case CARTRIDGE_EPYX_FASTLOAD:
             epyxfastload_reset();
             break;
@@ -2553,6 +2571,9 @@ static void cart_freeze(int type)
             break;
         case CARTRIDGE_CAPTURE:
             capture_freeze();
+            break;
+        case CARTRIDGE_CHAT64:
+            chat64_freeze();
             break;
         case CARTRIDGE_DIASHOW_MAKER:
             dsm_freeze();

@@ -262,7 +262,8 @@ void cartridge_sound_chip_init(void);
 #define CARTRIDGE_FREEZE_FRAME_MK2     77 /* freezeframe2.c */
 #define CARTRIDGE_PARTNER64            78 /* partner64.c */
 #define CARTRIDGE_HYPERBASIC           79 /* hyperbasic.c */
-#define CARTRIDGE_LAST                 79 /* cartconv: last cartridge in list */
+#define CARTRIDGE_CHAT64               80 /* chat64.c */
+#define CARTRIDGE_LAST                 80 /* cartconv: last cartridge in list */
 
 /* list of canonical names for the c64 cartridges:
    note: often it is hard to determine "the" official name, let alone the way it
@@ -291,6 +292,7 @@ void cartridge_sound_chip_init(void);
 #define CARTRIDGE_NAME_BLACKBOX9          "Blackbox V9"
 #define CARTRIDGE_NAME_GS                 "C64 Games System" /* http://retro.lonningdal.net/home.php?page=Computers&select=c64gs&image=c64gs4.jpg */
 #define CARTRIDGE_NAME_CAPTURE            "Capture" /* see manual http://rr.pokefinder.org/wiki/Capture */
+#define CARTRIDGE_NAME_CHAT64             "Chat64" /* http://www.chat64.nl */
 #define CARTRIDGE_NAME_COMAL80            "Comal 80" /* http://www.retroport.de/C64_C128_Hardware.html */
 #define CARTRIDGE_NAME_CPM                "CP/M cartridge"
 #define CARTRIDGE_NAME_DREAN              "Drean"

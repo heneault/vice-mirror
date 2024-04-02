@@ -61,6 +61,7 @@
 #include "c64-generic.h"
 #include "c64-midi.h"
 #include "c64tpi.h"
+#include "chat64.h"
 #include "comal80.h"
 #include "capture.h"
 #include "delaep256.h"
@@ -629,6 +630,8 @@ static uint8_t roml_read_slotmain(uint16_t addr)
             return actionreplay3_roml_read(addr);
         case CARTRIDGE_ATOMIC_POWER:
             return atomicpower_roml_read(addr);
+        case CARTRIDGE_CHAT64:
+            return chat64_roml_read(addr);
         case CARTRIDGE_EASYFLASH:
             return easyflash_roml_read(addr);
         case CARTRIDGE_EPYX_FASTLOAD:

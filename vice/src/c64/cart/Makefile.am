@@ -66,6 +66,8 @@ libc64cart_a_SOURCES = \
 	clockport-mp3at64.h \
 	clockport-rrnet.c \
 	clockport-rrnet.h \
+	chat64.c \
+	chat64.h \
 	comal80.c \
 	comal80.h \
 	cpmcart.c \
